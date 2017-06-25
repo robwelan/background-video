@@ -1,0 +1,42 @@
+.aspect-ratio-16-9 {
+  /* Calculation 16:9 aspect ratio:
+   *    9/(16/100) = 56.25%
+   */
+  padding-top: 56.25%;
+}
+.aspect-ratio-4-3 {
+  /* Calculation 4:3 aspect ratio:
+   *    3/(4/100) = 75%
+   */
+   padding-top: 75%;
+}
+.aspect-ratio-3-2 {
+  /* Calculation 3:2 aspect ratio:
+   *    2/(3/100) = 66.666%
+   */
+   padding-top: 66.666%;
+}
+.aspect-ratio-8-5 {
+  /* Calculation 8:5 aspect ratio:
+   *    5/(8/100) = 62.5%
+   */
+   padding-top: 62.5%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.background-video {
+  position: relative;
+	height: 0;
+  z-index: -99;
+}
+
+.background-video iframe {
+  position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Background Video Examples</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4=" crossorigin="anonymous" type="text/css"/>
+  <link rel="stylesheet" href="css/background-video.css" type="text/css">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+top
+  <section class="full-width background-video aspect-ratio-16-9">
+  <div id="fullWidth"></div>
+</section>
+bottom
+
+  <script src="js/background-video.js" type="application/javascript"></script>
+  <script type="application/javascript">
+    var oBV01 = {
+      elementID: 'fullWidth',
+      videoID: 'LO13tXK2V8M',
+      playerVolume: 0,
+      loop: true,
+      autoplay: true
+    }
+
+    var v01 = backgroundVideo();
+    v01.init(oBV01);
+    window.onYouTubePlayerAPIReady = function() {
+        v01.play();
+    };
+    function actualResizeHandler() {
+      v01.resize();
+    }
+  </script>
+</body>
+
+</html>
