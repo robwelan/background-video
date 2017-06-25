@@ -1,7 +1,7 @@
 # background-video
 Defined to use with YouTube only.
 
-##How to use
+## How to use
 Define a variable using backgroundVideo. For example:
 ```
 <script>
@@ -29,7 +29,7 @@ The required HTML:
 </section>
 ```
 
-##Available Settings
+## Available Settings
 The Settings object accepts the following arguments:
   elementID: the target HTML element
   videoID: the YouTube video you wish to play
