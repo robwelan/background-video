@@ -3,11 +3,11 @@ Defined to use with YouTube only.
 
 ## How to use
 Define a variable using backgroundVideo. For example:
-```
-<script>
-  var oVideo = backgroundVideo();
-</script>
-```
+    ```
+    <script>
+      var oVideo = backgroundVideo();
+    </script>
+    ```
 
 Define a variable to configure the video object. For example:
 ```
@@ -22,16 +22,17 @@ Define a variable to configure the video object. For example:
   }
 </script>
 ```
+
 The required HTML:
 ```
-<section class="full-width background-video aspect-ratio-16-9">
+<section class="background-video width-100%">
   <div id="fullWidth"></div>
 </section>
 ```
 
 ## Available Settings
-The Settings object accepts the following arguments:
-  elementID: the target HTML element
+The Settings object accepts the following arguments:  
+  elementID: the target HTML element  
   videoID: the YouTube video you wish to play
 
 /*
