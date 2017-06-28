@@ -2,12 +2,12 @@
 Defined to use with YouTube only.
 
 ## How to use
-Define a variable using backgroundVideo. For example:
-    ```
-    <script>
-      var oVideo = backgroundVideo();
-    </script>
-    ```
+Define a variable using backgroundVideo. For example:  
+```javascript
+<script>
+  var oVideo = backgroundVideo();
+</script>
+```
 
 Define a variable to configure the video object. For example:
 ```
@@ -30,42 +30,74 @@ The required HTML:
 </section>
 ```
 
-## Available Settings
-The Settings object accepts the following arguments:  
-  elementID: the target HTML element  
-  videoID: the YouTube video you wish to play
+## Required Settings
+The Settings object accepts the following requried arguments:  
+### elementID
+* String
+* the ID of the target HTML element
+  
+### videoID
+* String
+* the ID of the YouTube video you wish to play
+  
+### Minimum Settings Definition
+The minimum required object definition needed to initialize and use backgroundVideo() is:
+```javascript
+var oSettings = {
+	elementID: 'id',
+	videoID: '<you-tube-id>'
+}
+```
+  
+## Optional Settings
+The following optional arguments can also be included:
+### aspectRatio
+* String
+* identifies the aspect ratio of the video  
+* Allowed values: '16-9', '4-3', '3-2', '8-5'  
+* default value: '16-9'  
 
-/*
-*	NOTE: defined for YouTube only
-*
-*	Argument:
-*	oSettings = {
-*		elementID,
-*		videoID,
-*		aspectRatio,
-*		qualityDesktop,
-*		qualityMobile,
-*		playerVolume,
-*		autoplay,
-*		loop,
-*		playlist
-*	}
-*
-*	Where:
-*	elementID: string which identifies the HTML node to insert the video.
-*		example: <div id="elementID"></div>
-*	videoID: string which identifies the video (as definded by YouTube)
-*	aspectRatio: string which identifies the aspect ratio of the video
-*		allowed values: '16-9', '4-3', '3-2', '8-5'
-*		default value: '16-9'
-*		check the video's aspect ratio before making the setting.
-*	qualityDesktop: the desired video quality on Desktop devices
-*		default value: 'medium'
-*	qualityMobile: the desired video quality on Mobile devices
-*		default value: 'small'
-*	playerVolume: 0 to 100 (100 being loudest)
-default: 100
-*	autoplay: true or false. Default is false.
-*	loop: true or false. Default is false.
-*	playlist: comma separated list. Default is ''.
-*/
+**NOTE**: check the video's aspect ratio before making the setting.
+### qualityDesktop
+* String
+* describes the desired video quality on Desktop devices
+* default value: 'medium'
+
+### qualityMobile
+* String
+* describes the desired video quality on Desktop devices
+* default value: 'small'
+  
+### playerVolume
+* Number
+* 0 to 100
+* 0 equals no sound at all
+* 100 is loudest volume possible
+* default value: 100
+
+### autoplay
+* Boolean
+* default value: false
+
+### loop
+* Boolean
+* default value: false
+
+### playlist
+* String (comma separated string list)
+* default value: ''
+
+### Complete Settings Definition
+```javascript
+var oSettings = {
+	elementID: 'id',
+	videoID: '<you-tube-id>',
+	aspectRatio: '4-3',
+	qualityDesktop: 'large',
+	qualityMobile: 'small',
+	playerVolume: 0,
+	autoplay: true,
+	loop: false,
+	playlist: ''
+}
+```
