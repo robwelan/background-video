@@ -101,3 +101,6 @@ var oSettings = {
 	playlist: ''
 }
 ```
+
+## YouTube iFrame API
+For more information about the YouTube iFrame API, follow this link: [https://developers.google.com/youtube/iframe_api_reference](https://developers.google.com/youtube/iframe_api_reference)

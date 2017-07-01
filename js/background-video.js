@@ -125,12 +125,7 @@ backgroundVideo = function() {
 
 		oParentElement.style.height = height + 'px';
 		oParentElement.style.width = width + 'px';
-		var nCorrection = Math.ceil(oParentElement.offsetHeight / 4);
-		var sInset = 'inset('+ nCorrection + 'px 0px ' + nCorrection + 'px 0px)';
-
-		oParentElement.style.clipPath = sInset;
-		oParentElement.style.marginTop = (nCorrection * -1) + 'px';
-		oParentElement.style.marginBottom = (nCorrection * -1) + 'px';
+console.log('w', width, 'h', height)
 		return { height: height, width: width };
 	}
 
