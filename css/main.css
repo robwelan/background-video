@@ -1,0 +1,39 @@
+html, body {
+    height:100%;
+}
+
+/*
+ *  START % widths
+ *  '\25' is hex number for %
+ *
+ */
+.width-100\25 {
+  width: 100%;
+}
+.width-70\25 {
+  width: 70%;
+}
+.width-66\25 {
+  width: 66.666%;
+}
+.width-50\25 {
+  width: 50%;
+}
+.width-33\25 {
+  width: 33.333%;
+}
+.width-25\25 {
+  width: 100%;
+}
+/* END % widths */
+
+/* random things */
+.spacer {
+  height: 80px;
+}
+.blue {
+  background: blue;
+}
+.green {
+  background: green;
+}

@@ -9,37 +9,64 @@
   <title>Background Video Examples</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4=" crossorigin="anonymous" type="text/css"/>
+  <link rel="stylesheet" href="css/main.css" type="text/css">
   <link rel="stylesheet" href="css/background-video.css" type="text/css">
   <link rel="icon" href="favicon.ico">
 </head>
 
 <body>
-top
-  <section class="background-video parent-height-aspect-ratio-9-16">
-    <img class="aspect-ratio-9-16" src="https://img.youtube.com/vi/LO13tXK2V8M/maxresdefault.jpg">
-  <div id="fullWidth"></div>
-</section>
-bottom
-<div class="width-50%">here</div>
+
+  <section class="background-video height600px">
+    <!-- https://youtu.be/eCU3bgVCvYI -->
+    <img src="https://img.youtube.com/vi/eCU3bgVCvYI/0.jpg">
+    <div id="height600px"></div>
+    <div class="banner">Fixed Height</div>
+  </section>
+
+  <section class="spacer blue"></section>
+
+  <section class="background-video aspect-ratio-9-16">
+    <img src="https://img.youtube.com/vi/LO13tXK2V8M/maxresdefault.jpg">
+    <div id="fullWidth"></div>
+    <div class="banner">Aspect Ratio</div>
+  </section>
+
+  <section class="spacer green"></section>
+
+  <div>bottom</div>
+  <div class="width-50%">here</div>
 
   <script src="js/background-video.js" type="application/javascript"></script>
   <script type="application/javascript">
-    var oBV01 = {
-      elementID: 'fullWidth',
-      videoID: 'LO13tXK2V8M',
-      playerVolume: 0,
-      loop: true,
-      autoplay: true
-    }
+  var oBV01 = {
+    elementID: 'fullWidth',
+    videoID: 'LO13tXK2V8M',
+    playerVolume: 0,
+    loop: true,
+    autoplay: true
+  }
+  var oBV02 = {
+    elementID: 'height600px',
+    videoID: 'eCU3bgVCvYI',
+    playerVolume: 0,
+    loop: true,
+    autoplay: true,
+    height: 600,
+    clipTop: 168
+  }
 
-    var v01 = backgroundVideo();
-    v01.init(oBV01);
-    window.onYouTubePlayerAPIReady = function() {
-        v01.play();
-    };
-    function actualResizeHandler() {
-      v01.resize();
-    }
+  var v01 = backgroundVideo();
+  var v02 = backgroundVideo();
+  v01.init(oBV01);
+  v02.init(oBV02);
+  window.onYouTubePlayerAPIReady = function() {
+    v01.play();
+    v02.play();
+  };
+  function actualResizeHandler() {
+    v01.resize();
+    v02.resize();
+  }
   </script>
 </body>
 
