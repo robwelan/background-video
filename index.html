@@ -33,8 +33,13 @@
 
   <section class="spacer green"></section>
 
-  <div>bottom</div>
-  <div class="width-50%">here</div>
+  <section class="last-one">
+    <div class="background-video width-50% limited-width">
+      <img src="https://img.youtube.com/vi/-ZoNUoME7Ko/maxresdefault.jpg">
+      <div id="width50"></div>
+      <div class="banner">Limited Width</div>
+    </div>
+  </section>
 
   <script src="js/background-video.js" type="application/javascript"></script>
   <script type="application/javascript">
@@ -54,18 +59,33 @@
     height: 600,
     clipTop: 168
   }
+  var oBV03 = {
+    elementID: 'width50',
+    videoID: '-ZoNUoME7Ko',
+    playerVolume: 0,
+    loop: true,
+    autoplay: true
+  }
 
   var v01 = backgroundVideo();
   var v02 = backgroundVideo();
+  var v03 = backgroundVideo();
   v01.init(oBV01);
   v02.init(oBV02);
+  v03.init(oBV03);
   window.onYouTubePlayerAPIReady = function() {
     v01.play();
     v02.play();
+    v03.play();
   };
   function actualResizeHandler() {
+    console.log(v01.parameterResize('isScriptLoaded'))
+    if(v01.isScriptLoaded) {
+      v01.resize();
+    }
     v01.resize();
     v02.resize();
+    v03.resize();
   }
   </script>
 </body>

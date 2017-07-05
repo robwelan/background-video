@@ -1,5 +1,5 @@
 .background-video {
-  width: 100vw;
+/*  width: 100vw; */
   position: relative;
 	height: 0;
   z-index: -99;
@@ -15,18 +15,22 @@
 	height: 100%;
 }
 
+.background-video img {
+  position: absolute;
+  z-index: -100;
+}
+
 /* Aspect Ratios */
 .aspect-ratio-9-16 {
   width: 100vw;
   max-width: 100%;
   height: calc(100vw * (9/16));
-  position: relative;
+  /* position: relative; */
 }
 .aspect-ratio-9-16 img {
   max-width: 100%;
   height: calc(100vw * (9/16)); /* -8px is due to some weird bug thing) */
-  position: absolute;
-  z-index: -100;
+/*  position: absolute; */
 }
 
 /* Fixed Heights */
@@ -34,16 +38,27 @@
   width: 100vw;
   max-width: 100%;
   height: 600px;
-  position: relative;
+/*  position: relative; */
 }
 
 .height600px img {
   width: 100vw;
   max-width: 100%;
   height: auto;
-  position: absolute;
+/*  position: absolute;
+  z-index: -100; */
+  clip: rect(172px auto 1076px 0px);
+  clip: rect(172px,auto,1076px,0px);
+  -webkit-clip-path: inset(172px 0 173px 0);
+  clip-path: inset(172px 0 173px 0);
+  margin-top: -172px;
+  margin-bottom: -173px;
+}
+
+.limited-width img {
+  width: 100%;
+  height: auto;
   z-index: -100;
-  clip-path: inset(0 -172px 0 -173px);
 }
 
 /* Other */
@@ -56,4 +71,5 @@
   padding: 40px;
   background: #FFB6C1;
   background: rgba(255, 182, 182, .8);
+  border: 1px solid red;
 }

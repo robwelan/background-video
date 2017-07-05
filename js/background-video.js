@@ -119,6 +119,14 @@ backgroundVideo = function() {
 
 	}
 
+	function returnParameter(sParameter) {
+
+		if (sParameter = 'isScriptLoaded') {
+			console.log(sParameter,'yay', isScriptLoaded)
+			return isScriptLoaded;
+		}
+	}
+
 	function sizeHeight(sTarget, sAspectRatio) {
 		//16-9', '4-3', '3-2', '8-5
 		var oTarget = window.document.getElementById(sTarget);
@@ -277,6 +285,7 @@ backgroundVideo = function() {
 	}
 
 	return {
+		parameterResize: returnParameter,
 		init: init,
 		play: play,
 		resize: sizeHeight
@@ -299,6 +308,7 @@ backgroundVideo = function() {
       resizeTimeout = setTimeout(function() {
         resizeTimeout = null;
         actualResizeHandler();
+
 
        // The actualResizeHandler will execute at a rate of 15fps
        }, 66);
