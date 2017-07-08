@@ -1,6 +1,8 @@
 # background-video
 Defined to use with YouTube only.
 
+Here's an example: <a href="https://robwelan.github.io/background-video/" target="_blank">https://robwelan.github.io/background-video/</a>.
+
 ## How to use
 Define a variable using backgroundVideo. For example:  
 ```javascript
