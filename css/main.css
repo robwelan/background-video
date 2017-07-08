@@ -16,6 +16,9 @@ html, body {
 .width-66\25 {
   width: 66.666%;
 }
+.width-45\25 {
+  width: 45%;
+}
 .width-50\25 {
   width: 50%;
 }
@@ -36,4 +39,101 @@ html, body {
 }
 .green {
   background: green;
+}
+
+.last-one {
+  display: table;
+}
+
+.container {
+  display: table-row;
+}
+
+.cell {
+  display: table-cell;
+}
+
+.content {
+  padding: 20px;
+}
+
+.banner {
+  color: white;
+  font-size: 80px;
+  position: absolute;
+  margin: 20px;
+  padding: 40px;
+  background: #FFB6C1;
+  background: rgba(255, 182, 182, .8);
+  border: 1px solid #FF5671;
+  z-index: 2;
+}
+
+.match-video-height {
+  height: 430px;
+}
+
+@media screen and (max-width: 1366px) {
+    .banner {
+        font-size: 20px;
+        padding: 10px;
+        margin: 10px;
+    }
+    .match-video-height {
+      height: 384px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .match-video-height {
+      height: 288px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .match-video-height {
+      height: 216px;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .match-video-height {
+      height: 207px;
+    }
+}
+
+@media screen and (max-width: 732px) {
+    .match-video-height {
+      height: 192px;
+    }
+}
+
+@media screen and (max-width: 667px) {
+    .match-video-height {
+      height: 187px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .match-video-height {
+      height: 180px;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .match-video-height {
+      height: 159px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .match-video-height {
+      height: 116px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .match-video-height {
+      height: 105px;
+    }
 }

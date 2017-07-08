@@ -18,7 +18,8 @@ Define a variable to configure the video object. For example:
       videoID: 'LO13tXK2V8M',
       playerVolume: 0,
       loop: true,
-      autoplay: true
+      autoplay: true,
+      clipTop: 168
   }
 </script>
 ```
@@ -41,7 +42,7 @@ The Settings object accepts the following requried arguments:
 * the ID of the YouTube video you wish to play
   
 ### Minimum Settings Definition
-The minimum required object definition needed to initialize and use backgroundVideo() is:
+The minimum required object definition needed to initialize and use `backgroundVideo()` is:
 ```javascript
 var oSettings = {
 	elementID: 'id',
@@ -87,6 +88,14 @@ The following optional arguments can also be included:
 * String (comma separated string list)
 * default value: ''
 
+### clipTop
+* Number (pixels)
+* default value: 0
+* how much clip to remove from top of video
+* clip to remove from the bottom is calculated based on remaining height
+
+NOTE: clipTop looks for 'fixed-height' to be added to the class of the parent object.
+
 ### Complete Settings Definition
 ```javascript
 var oSettings = {
@@ -98,7 +107,8 @@ var oSettings = {
 	playerVolume: 0,
 	autoplay: true,
 	loop: false,
-	playlist: ''
+	playlist: '',
+	clipTop: 0
 }
 ```
 

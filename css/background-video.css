@@ -1,5 +1,4 @@
 .background-video {
-/*  width: 100vw; */
   position: relative;
 	height: 0;
   z-index: -99;
@@ -15,6 +14,16 @@
 	height: 100%;
 }
 
+.layer {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: rgba(255, 182, 182, .4);
+  z-index: 1;
+}
+
 .background-video img {
   position: absolute;
   z-index: -100;
@@ -25,12 +34,10 @@
   width: 100vw;
   max-width: 100%;
   height: calc(100vw * (9/16));
-  /* position: relative; */
 }
 .aspect-ratio-9-16 img {
   max-width: 100%;
-  height: calc(100vw * (9/16)); /* -8px is due to some weird bug thing) */
-/*  position: absolute; */
+  height: calc(100vw * (9/16));
 }
 
 /* Fixed Heights */
@@ -38,21 +45,12 @@
   width: 100vw;
   max-width: 100%;
   height: 600px;
-/*  position: relative; */
 }
 
 .height600px img {
   width: 100vw;
   max-width: 100%;
   height: auto;
-/*  position: absolute;
-  z-index: -100; */
-  clip: rect(172px auto 1076px 0px);
-  clip: rect(172px,auto,1076px,0px);
-  -webkit-clip-path: inset(172px 0 173px 0);
-  clip-path: inset(172px 0 173px 0);
-  margin-top: -172px;
-  margin-bottom: -173px;
 }
 
 .limited-width img {
@@ -61,15 +59,69 @@
   z-index: -100;
 }
 
-/* Other */
-.banner {
-  color: white;
-  font-size: 80px;
-  position: absolute;
-  margin-top: 20px;
-  margin-left: 20px;
-  padding: 40px;
-  background: #FFB6C1;
-  background: rgba(255, 182, 182, .8);
-  border: 1px solid red;
+/* Responsive Media Queries */
+@media screen and (max-width: 1024px) {
+  .height600px {
+    height: 576px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .height600px {
+    height: 432px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .height600px {
+    height: 414px;
+  }
+}
+
+@media screen and (max-width: 732px) {
+  .height600px {
+    height: 412px;
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .height600px {
+    height: 376px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .height600px {
+    height: 360px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .height600px {
+    height: 320px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .height600px {
+    height: 233px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .height600px {
+    height: 211px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .height600px {
+    height: 203px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .height600px {
+    height: 180px;
+  }
 }

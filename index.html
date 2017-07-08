@@ -8,15 +8,15 @@
 
   <title>Background Video Examples</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4=" crossorigin="anonymous" type="text/css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4="
+    crossorigin="anonymous" type="text/css" />
   <link rel="stylesheet" href="css/main.css" type="text/css">
   <link rel="stylesheet" href="css/background-video.css" type="text/css">
   <link rel="icon" href="favicon.ico">
 </head>
 
 <body>
-
-  <section class="background-video height600px">
+  <section class="background-video height600px fixed-height">
     <!-- https://youtu.be/eCU3bgVCvYI -->
     <img src="https://img.youtube.com/vi/eCU3bgVCvYI/0.jpg">
     <div id="height600px"></div>
@@ -33,60 +33,70 @@
 
   <section class="spacer green"></section>
 
-  <section class="last-one">
-    <div class="background-video width-50% limited-width">
-      <img src="https://img.youtube.com/vi/-ZoNUoME7Ko/maxresdefault.jpg">
-      <div id="width50"></div>
-      <div class="banner">Limited Width</div>
+  <section class="last-one width-100% match-video-height">
+    <div class="container width-100%">
+      <div class="background-video width-50% limited-width cell">
+        <img src="https://img.youtube.com/vi/-ZoNUoME7Ko/maxresdefault.jpg">
+        <div class="layer"></div>
+        <div id="width50"></div>
+        <div class="banner">Limited Width</div>
+      </div>
+      <div class="width-50% limited-width cell">
+        <div class="content">
+          <h2>Limited width video on the left</h2>
+          <p>
+            The video on the left will grow and shrink relative to the size of it's container.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
+  <section class="spacer blue"></section>
+
   <script src="js/background-video.js" type="application/javascript"></script>
   <script type="application/javascript">
-  var oBV01 = {
-    elementID: 'fullWidth',
-    videoID: 'LO13tXK2V8M',
-    playerVolume: 0,
-    loop: true,
-    autoplay: true
-  }
-  var oBV02 = {
-    elementID: 'height600px',
-    videoID: 'eCU3bgVCvYI',
-    playerVolume: 0,
-    loop: true,
-    autoplay: true,
-    height: 600,
-    clipTop: 168
-  }
-  var oBV03 = {
-    elementID: 'width50',
-    videoID: '-ZoNUoME7Ko',
-    playerVolume: 0,
-    loop: true,
-    autoplay: true
-  }
-
-  var v01 = backgroundVideo();
-  var v02 = backgroundVideo();
-  var v03 = backgroundVideo();
-  v01.init(oBV01);
-  v02.init(oBV02);
-  v03.init(oBV03);
-  window.onYouTubePlayerAPIReady = function() {
-    v01.play();
-    v02.play();
-    v03.play();
-  };
-  function actualResizeHandler() {
-    console.log(v01.parameterResize('isScriptLoaded'))
-    if(v01.isScriptLoaded) {
-      v01.resize();
+    var oBV01 = {
+      elementID: 'fullWidth',
+      videoID: 'LO13tXK2V8M',
+      playerVolume: 0,
+      loop: true,
+      autoplay: true
     }
-    v01.resize();
-    v02.resize();
-    v03.resize();
-  }
+    var oBV02 = {
+      elementID: 'height600px',
+      videoID: 'eCU3bgVCvYI',
+      playerVolume: 0,
+      loop: true,
+      autoplay: true,
+      clipTop: 168
+    }
+    var oBV03 = {
+      elementID: 'width50',
+      videoID: '-ZoNUoME7Ko',
+      playerVolume: 0,
+      loop: true,
+      autoplay: true
+    }
+
+    var v01 = backgroundVideo();
+    var v02 = backgroundVideo();
+    var v03 = backgroundVideo();
+
+    v01.init(oBV01);
+    v02.init(oBV02);
+    v03.init(oBV03);
+
+    window.onYouTubePlayerAPIReady = function () {
+      v01.play();
+      v02.play();
+      v03.play();
+    };
+    function actualResizeHandler() {
+      v01.resize();
+      v02.resize();
+      v03.resize();
+    }
   </script>
 </body>
 
