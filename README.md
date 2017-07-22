@@ -3,7 +3,7 @@ Defined to use with YouTube only.
 
 Here's an example: <a href="https://robwelan.github.io/background-video/" target="_blank">https://robwelan.github.io/background-video/</a>.
 
-## How to use
+## Instructions
 Define a variable using backgroundVideo. For example:  
 ```javascript
 <script>
@@ -16,12 +16,12 @@ Define a variable to configure the video object. For example:
 <script>
   ...
   var oBV01 = {
-      elementID: 'fullWidth',
-      videoID: 'LO13tXK2V8M',
-      playerVolume: 0,
-      loop: true,
-      autoplay: true,
-      clipTop: 168
+    elementID: 'fullWidth',
+    videoID: 'LO13tXK2V8M',
+    playerVolume: 0,
+    loop: true,
+    autoplay: true,
+    clipTop: 168
   }
 </script>
 ```
@@ -34,7 +34,7 @@ The required HTML:
 ```
 
 ## Required Settings
-The Settings object accepts the following requried arguments:  
+The Settings object accepts the following required arguments:  
 ### elementID
 * String
 * the ID of the target HTML element
@@ -47,8 +47,8 @@ The Settings object accepts the following requried arguments:
 The minimum required object definition needed to initialize and use `backgroundVideo()` is:
 ```javascript
 var oSettings = {
-	elementID: 'id',
-	videoID: '<you-tube-id>'
+  elementID: 'id',
+  videoID: '<you-tube-id>'
 }
 ```
   
@@ -101,18 +101,20 @@ NOTE: clipTop looks for 'fixed-height' to be added to the class of the parent ob
 ### Complete Settings Definition
 ```javascript
 var oSettings = {
-	elementID: 'id',
-	videoID: '<you-tube-id>',
-	aspectRatio: '4-3',
-	qualityDesktop: 'large',
-	qualityMobile: 'small',
-	playerVolume: 0,
-	autoplay: true,
-	loop: false,
-	playlist: '',
-	clipTop: 0
+  elementID: 'id',
+  videoID: '<you-tube-id>',
+  aspectRatio: '4-3',
+  qualityDesktop: 'large',
+  qualityMobile: 'small',
+  playerVolume: 0,
+  autoplay: true,
+  loop: false,
+  playlist: '',
+  clipTop: 0
 }
 ```
+
+---
 
 ## YouTube iFrame API
 For more information about the YouTube iFrame API, follow this link: [https://developers.google.com/youtube/iframe_api_reference](https://developers.google.com/youtube/iframe_api_reference)
