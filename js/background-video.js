@@ -1,7 +1,8 @@
 /*
 * Copyright (c) Rob Welan
-* https://creatureoftech.com/
-* https://au.linkedin.com/in/robwelan
+* Location: https://github.com/robwelan/background-video
+* Read All About It: https://creatureoftech.com/
+* Connect: https://au.linkedin.com/in/robwelan
 * License: MIT
 *
 *	NOTE: defined for YouTube only
