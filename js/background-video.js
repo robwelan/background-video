@@ -1,4 +1,9 @@
 /*
+* Copyright (c) Rob Welan
+* https://creatureoftech.com/
+* https://au.linkedin.com/in/robwelan
+* License: MIT
+*
 *	NOTE: defined for YouTube only
 *
 *	Argument:
