@@ -24,9 +24,12 @@
   z-index: 1;
 }
 
-.background-video img {
+.bv-image {
   position: absolute;
   z-index: -100;
+  width: 100vw;
+  max-width: 100%;
+  height: auto;
 }
 
 /* Aspect Ratios */
@@ -35,8 +38,8 @@
   max-width: 100%;
   height: calc(100vw * (9/16));
 }
-.aspect-ratio-9-16 img {
-  max-width: 100%;
+
+.aspect-ratio-9-16 .bv-image {
   height: calc(100vw * (9/16));
 }
 
@@ -47,17 +50,11 @@
   height: 600px;
 }
 
-.height600px img {
-  width: 100vw;
-  max-width: 100%;
-  height: auto;
+.height600px .bv-image {
+  margin-top: -160px;
 }
 
-.limited-width img {
-  width: 100%;
-  height: auto;
-  z-index: -100;
-}
+
 
 /* Responsive Media Queries */
 @media screen and (max-width: 1024px) {
