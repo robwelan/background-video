@@ -1,48 +1,14 @@
 /*
-* Copyright (c) Rob Welan
-* Location: https://github.com/robwelan/background-video
-* Read All About It: https://creatureoftech.com/
-* Connect: https://au.linkedin.com/in/robwelan
-* License: MIT
-*
-*	NOTE: defined for YouTube only
-*
-*	Argument:
-*	oSettings = {
-*		elementID,
-*		videoID,
-*		aspectRatio,
-*		qualityDesktop,
-*		qualityMobile,
-*		playerVolume,
-*		autoplay,
-*		loop,
-*		playlist
-*	}
-*
-*	Where:
-*	elementID: string which identifies the HTML node to insert the video.
-*		example: <div id="elementID"></div>
-*	videoID: string which identifies the video (as definded by YouTube)
-*	aspectRatio: string which identifies the aspect ratio of the video
-*		allowed values: '16-9', '4-3', '3-2', '8-5'
-*		default value: '16-9'
-*		check the video's aspect ratio before making the setting.
-*	qualityDesktop: the desired video quality on Desktop devices
-*		default value: 'medium'
-*	qualityMobile: the desired video quality on Mobile devices
-*		default value: 'small'
-*	playerVolume: 0 to 100 (100 being loudest)
-default: 100
-*	autoplay: true or false. Default is false.
-*	loop: true or false. Default is false.
-*	playlist: comma separated list. Default is ''.
-* clipTop: height in px. Default is 0. If zero is used, the aspect ratio minus
-* 	the height is used (if height is greater than zero). clipTop is required if
-*		height is used.
-*/
+ *
+ * Copyright (c) Rob Welan
+ * Location: https://github.com/robwelan/background-video
+ * Read All About It: https://creatureoftech.com/
+ * Connect: https://au.linkedin.com/in/robwelan
+ * License: MIT
+ *
+ */
 
-backgroundVideo = function() {
+backgroundVideo = function () {
   var isValid = false;
   var isScriptLoaded = false;
   var player;
@@ -173,10 +139,33 @@ backgroundVideo = function() {
         oTarget.style.marginBottom = nMB + "px";
       }
     } else {
-      nMT = Math.ceil((oParent.offsetHeight * 0.0042328 + 2) * -1);
-      nMB = Math.ceil((oParent.offsetHeight * 0.0042328 + 2) * -1);
-      oParent.style.marginTop = nMT + "px";
-      oParent.style.marginBottom = nMB + "px";
+      if (o.hasOwnProperty('clipRatioHorizontal')) {
+        var nRemainingHeight = oParent.offsetHeight - (oParent.offsetHeight * o.clipRatioHorizontal);
+        var nClipHeight = Math.ceil(oParent.offsetHeight * o.clipRatioHorizontal);
+        nCB = nClipHeight + nRemainingHeight;
+        nMT = Math.ceil((oParent.offsetHeight * o.clipRatioHorizontal) + 1) * -1;
+        nMB = Math.ceil((oParent.offsetHeight * o.clipRatioHorizontal) + 1) * -1;
+        oParent.style.marginTop = nMT + "px";
+        oParent.style.marginBottom = nMB + "px";
+        console.log(nRemainingHeight)
+        // Clip
+        sCa = "clip: rect(" + nClipHeight + "px auto " + nRemainingHeight + "px 0px)";
+        sCb = "clip: rect(" + nClipHeight + "px, auto, " + nRemainingHeight + "px, 0px)";
+        oParent.style.clip = sCa;
+        oParent.style.clip = sCb;
+        // ClipPath
+        sCP = "inset(" + nClipHeight + "px 0px " + nClipHeight + "px 0px)";
+        oParent.style.webkitClipPath = sCP;
+        oParent.style.mozClipPath = sCP;
+        oParent.style.msClipPath = sCP;
+        oParent.style.oClipPath = sCP;
+        oParent.style.clipPath = sCP;
+      } else {
+        nMT = Math.ceil((oParent.offsetHeight * 0.0042328 + 2) * -1);
+        nMB = Math.ceil((oParent.offsetHeight * 0.0042328 + 2) * -1);
+        oParent.style.marginTop = nMT + "px";
+        oParent.style.marginBottom = nMB + "px";
+      }
     }
   }
 
@@ -225,8 +214,10 @@ backgroundVideo = function() {
 
     oParentElement.style.width = width + "px";
 
-    oThis = { height: height, width: width };
-    console.log(oThis);
+    oThis = {
+      height: height,
+      width: width
+    };
     return oThis;
   }
 
@@ -274,7 +265,12 @@ backgroundVideo = function() {
     }
 
     if (firstLoad === true || isScriptLoaded === true) {
-      console.log("YouTube is initialized...");
+      if (o.hasOwnProperty("verbose")) {
+        if (o.verbose === false) {
+          return;
+        }
+      }
+      console.log("Video " + o.videoID + " is initialized...");
     }
   }
 
@@ -335,14 +331,15 @@ backgroundVideo = function() {
  *	https://developer.mozilla.org/en-US/docs/Web/Events/resize
  */
 
-(function() {
+(function () {
   window.addEventListener("resize", resizeThrottler, false);
 
   var resizeTimeout;
+
   function resizeThrottler() {
     // ignore resize events as long as an actualResizeHandler execution is in the queue
     if (!resizeTimeout) {
-      resizeTimeout = setTimeout(function() {
+      resizeTimeout = setTimeout(function () {
         resizeTimeout = null;
         actualResizeHandler();
 

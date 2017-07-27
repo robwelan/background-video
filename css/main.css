@@ -86,6 +86,14 @@ html, body {
   height: auto;
 }
 
+.offset-ar-helper.top {
+  margin-top: 4.8em;
+}
+
+.offset-ar-helper.bottom {
+  margin-bottom: 4.8em;
+}
+
 @media screen and (max-width: 1366px) {
     .banner {
         font-size: 20px;

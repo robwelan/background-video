@@ -10,8 +10,8 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4="
     crossorigin="anonymous" type="text/css" />
-  <link rel="stylesheet" href="css/main.css" type="text/css">
   <link rel="stylesheet" href="css/background-video.css" type="text/css">
+  <link rel="stylesheet" href="css/main.css" type="text/css">
   <link rel="icon" href="favicon.ico">
 </head>
 
@@ -57,6 +57,17 @@
 
   <section class="spacer blue"></section>
 
+  <section>
+    <!-- <img class="bv-image" src="https://img.youtube.com/vi/e-zJi_R5BCM/maxresdefault.jpg"> -->
+    <div class="background-video aspect-ratio-9-16">
+      <div id="non-compliant-height"></div>
+    </div>
+    <div class="banner offset-ar-helper bottom">Non-compliant Height</div>
+    <!--    <div class="float-top-left offset-ar-helper top"><img src="https://img.youtube.com/vi/e-zJi_R5BCM/maxresdefault.jpg"></div> -->
+  </section>
+
+  <section class="spacer green"></section>
+
   <script src="js/background-video.js" type="application/javascript"></script>
   <script type="application/javascript">
     var oBV01 = {
@@ -64,7 +75,8 @@
       videoID: 'LO13tXK2V8M',
       playerVolume: 0,
       loop: true,
-      autoplay: true
+      autoplay: true,
+      verbose: false
     }
     var oBV02 = {
       elementID: 'height600px',
@@ -72,33 +84,50 @@
       playerVolume: 0,
       loop: true,
       autoplay: true,
-      clipTop: 168
+      clipTop: 168,
+      verbose: false
     }
     var oBV03 = {
       elementID: 'width50',
       videoID: '-ZoNUoME7Ko',
       playerVolume: 0,
       loop: true,
-      autoplay: true
+      autoplay: true,
+      verbose: false
+    }
+
+    var oBV04 = {
+      elementID: 'non-compliant-height',
+      videoID: 'e-zJi_R5BCM',
+      playerVolume: 0,
+      loop: true,
+      autoplay: true,
+      clipRatioHorizontal: 0.137,
+      verbose: false
     }
 
     var v01 = backgroundVideo();
     var v02 = backgroundVideo();
     var v03 = backgroundVideo();
+    var v04 = backgroundVideo();
 
     v01.init(oBV01);
     v02.init(oBV02);
     v03.init(oBV03);
+    v04.init(oBV04);
 
     window.onYouTubePlayerAPIReady = function () {
       v01.play();
       v02.play();
       v03.play();
+      v04.play();
     };
+
     function actualResizeHandler() {
       v01.resize();
       v02.resize();
       v03.resize();
+      v04.resize();
     }
   </script>
 </body>
