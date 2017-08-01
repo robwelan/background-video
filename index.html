@@ -16,40 +16,49 @@
 </head>
 
 <body>
-  <section class="background-video height600px fixed-height">
-    <!-- https://youtu.be/eCU3bgVCvYI -->
-    <img class="bv-image" src="https://img.youtube.com/vi/eCU3bgVCvYI/0.jpg">
-    <div id="height600px"></div>
-    <div class="banner">Fixed Height</div>
-    <div class="float-top-left"><img src="https://img.youtube.com/vi/eCU3bgVCvYI/0.jpg"></div>
+  <section class="relative-assets">
+    <div class="background-video height600px fixed-height">
+      <img class="bv-image" src="https://img.youtube.com/vi/eCU3bgVCvYI/0.jpg">
+      <div id="height600px"></div>
+    </div>
+    <div class="position-left banner position-absolute bottom">Fixed Height</div>
+    <div class="position-left width200px position-absolute top"><img src="https://img.youtube.com/vi/eCU3bgVCvYI/0.jpg"></div>
   </section>
 
   <section class="spacer blue"></section>
 
-  <section class="background-video aspect-ratio-9-16">
-    <img class="bv-image" src="https://img.youtube.com/vi/LO13tXK2V8M/maxresdefault.jpg">
-    <div id="fullWidth"></div>
-    <div class="banner">Aspect Ratio</div>
-    <div class="float-top-left"><img src="https://img.youtube.com/vi/LO13tXK2V8M/maxresdefault.jpg"></div>
+  <section class="relative-assets">
+    <div class="background-video aspect-ratio-9-16">
+      <img class="bv-image" src="https://img.youtube.com/vi/LO13tXK2V8M/maxresdefault.jpg">
+      <div id="fullWidth"></div>
+    </div>
+    <div class="position-left banner position-absolute bottom">Aspect Ratio</div>
+    <div class="position-left width200px position-absolute top">
+      <img src="https://img.youtube.com/vi/LO13tXK2V8M/maxresdefault.jpg">
+    </div>
   </section>
 
   <section class="spacer green"></section>
 
-  <section class="last-one width-100% match-video-height">
-    <div class="container width-100%">
-      <div class="background-video width-50% limited-width cell">
-        <img class="bv-image" src="https://img.youtube.com/vi/-ZoNUoME7Ko/maxresdefault.jpg">
-        <div class="layer"></div>
-        <div id="width50"></div>
-        <div class="float-top-left"><img src="https://img.youtube.com/vi/-ZoNUoME7Ko/maxresdefault.jpg"></div>
-        <div class="banner">Limited Width</div>
-      </div>
-      <div class="width-50% limited-width cell">
-        <div class="content">
-          <h2>Limited width video on the left</h2>
-          <p>
-            The video on the left will grow and shrink relative to the size of it's container.
-          </p>
+  <section>
+    <div class="display-table width-100%">
+      <div class="container-row">
+        <div class="relative-assets width-50% cell">
+          <div class="background-video match-video-height">
+            <img class="bv-image" src="https://img.youtube.com/vi/-ZoNUoME7Ko/maxresdefault.jpg">
+            <div class="layer"></div>
+            <div id="width50"></div>
+          </div>
+          <div class="position-left width200px position-absolute top"><img src="https://img.youtube.com/vi/-ZoNUoME7Ko/maxresdefault.jpg"></div>
+          <div class="position-left banner position-absolute bottom">Limited Width</div>
+        </div>
+        <div class="width-50% cell relative-assets">
+          <div class="content">
+            <h2>Limited width video on the left</h2>
+            <p>
+              The video on the left will grow and shrink relative to the size of it's container.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -57,13 +66,13 @@
 
   <section class="spacer blue"></section>
 
-  <section>
-    <!-- <img class="bv-image" src="https://img.youtube.com/vi/e-zJi_R5BCM/maxresdefault.jpg"> -->
+  <section class="relative-assets non-compliant-height">
     <div class="background-video aspect-ratio-9-16">
       <div id="non-compliant-height"></div>
+      <img class="bv-image" src="https://img.youtube.com/vi/e-zJi_R5BCM/maxresdefault.jpg">
     </div>
-    <div class="banner offset-ar-helper bottom">Non-compliant Height</div>
-    <!--    <div class="float-top-left offset-ar-helper top"><img src="https://img.youtube.com/vi/e-zJi_R5BCM/maxresdefault.jpg"></div> -->
+    <div class="position-left banner position-absolute nch-bottom">Non-compliant Height</div>
+    <div class="position-left width200px position-absolute nch-top"><img src="https://img.youtube.com/vi/e-zJi_R5BCM/maxresdefault.jpg"></div>
   </section>
 
   <section class="spacer green"></section>
@@ -78,6 +87,7 @@
       autoplay: true,
       verbose: false
     }
+
     var oBV02 = {
       elementID: 'height600px',
       videoID: 'eCU3bgVCvYI',
@@ -87,9 +97,11 @@
       clipTop: 168,
       verbose: false
     }
+
     var oBV03 = {
       elementID: 'width50',
       videoID: '-ZoNUoME7Ko',
+      limitToParentWidth: true,
       playerVolume: 0,
       loop: true,
       autoplay: true,
@@ -123,7 +135,7 @@
       v04.play();
     };
 
-    function actualResizeHandler() {
+    function resizeHandler() {
       v01.resize();
       v02.resize();
       v03.resize();

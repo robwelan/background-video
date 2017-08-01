@@ -29,8 +29,22 @@ backgroundVideo = function () {
     validate(o);
 
     if (isValid === false) {
-      console.log("background-video could not be initialized...");
-      return;
+      var bHasID = false;
+      if (o.hasOwnProperty("videoID")) {
+        if (o.videoID !== "") {
+          bHasID = true;
+        }
+      }
+
+      if (bHasID === true) {
+        console.log("FATAL: unable to initialize. ID: " + o.videoID + ".");
+      } else {
+        console.log(
+          "FATAL: unable to initialize. No video supplied to this api."
+        );
+      }
+
+      return false;
     }
     if (o.hasOwnProperty("clipTop")) {
       if (o.clipTop > 0) {
@@ -139,18 +153,29 @@ backgroundVideo = function () {
         oTarget.style.marginBottom = nMB + "px";
       }
     } else {
-      if (o.hasOwnProperty('clipRatioHorizontal')) {
-        var nRemainingHeight = oParent.offsetHeight - (oParent.offsetHeight * o.clipRatioHorizontal);
-        var nClipHeight = Math.ceil(oParent.offsetHeight * o.clipRatioHorizontal);
+      if (o.hasOwnProperty("clipRatioHorizontal")) {
+        var nRemainingHeight =
+          oParent.offsetHeight - oParent.offsetHeight * o.clipRatioHorizontal;
+        var nClipHeight =
+          Math.ceil(oParent.offsetHeight * o.clipRatioHorizontal) + 1;
         nCB = nClipHeight + nRemainingHeight;
-        nMT = Math.ceil((oParent.offsetHeight * o.clipRatioHorizontal) + 1) * -1;
-        nMB = Math.ceil((oParent.offsetHeight * o.clipRatioHorizontal) + 1) * -1;
+        nMT = nClipHeight * -1;
+        nMB = nClipHeight * -1;
         oParent.style.marginTop = nMT + "px";
         oParent.style.marginBottom = nMB + "px";
-        console.log(nRemainingHeight)
         // Clip
-        sCa = "clip: rect(" + nClipHeight + "px auto " + nRemainingHeight + "px 0px)";
-        sCb = "clip: rect(" + nClipHeight + "px, auto, " + nRemainingHeight + "px, 0px)";
+        sCa =
+          "clip: rect(" +
+          nClipHeight +
+          "px auto " +
+          nRemainingHeight +
+          "px 0px)";
+        sCb =
+          "clip: rect(" +
+          nClipHeight +
+          "px, auto, " +
+          nRemainingHeight +
+          "px, 0px)";
         oParent.style.clip = sCa;
         oParent.style.clip = sCb;
         // ClipPath
@@ -183,13 +208,13 @@ backgroundVideo = function () {
     var oThis = {};
     var oTarget = window.document.getElementById(sTarget);
     var oParentElement = oTarget.parentElement;
-    var width = 0;
+    var width = window.innerWidth;
     var height = 0;
 
-    if (hasClass(oParentElement, "limited-width")) {
-      width = oParentElement.offsetWidth;
-    } else {
-      width = window.innerWidth;
+    if (o.hasOwnProperty("limitToParentWidth")) {
+      if (o.limitToParentWidth === true) {
+        width = oParentElement.offsetWidth;
+      }
     }
 
     if (sAspectRatio === "4-3") {
@@ -224,20 +249,20 @@ backgroundVideo = function () {
   function validate(o) {
     if (typeof value != "undefined" && value) {
       if (o.elementID === "") {
-        return;
+        return false;
       }
       if (o.videoID === "") {
-        return;
+        return false;
       }
     }
     if (o.hasOwnProperty("height")) {
       if (o.height > 0) {
         if (o.hasOwnProperty("clipTop")) {
           if (o.clipTop <= 0) {
-            return;
+            return false;
           }
         } else {
-          return;
+          return false;
         }
       }
     }
@@ -256,6 +281,7 @@ backgroundVideo = function () {
         break;
       }
     }
+
     if (isScriptLoaded === false) {
       var tag = document.createElement("script");
       tag.src = sSource;
@@ -267,7 +293,7 @@ backgroundVideo = function () {
     if (firstLoad === true || isScriptLoaded === true) {
       if (o.hasOwnProperty("verbose")) {
         if (o.verbose === false) {
-          return;
+          return false;
         }
       }
       console.log("Video " + o.videoID + " is initialized...");
@@ -290,7 +316,7 @@ backgroundVideo = function () {
 
   function play() {
     if (isValid === false) {
-      return;
+      return false;
     }
 
     player = new YT.Player(o.elementID, {
@@ -341,14 +367,14 @@ backgroundVideo = function () {
     if (!resizeTimeout) {
       resizeTimeout = setTimeout(function () {
         resizeTimeout = null;
-        actualResizeHandler();
+        resizeHandler();
 
-        // The actualResizeHandler will execute at a rate of 15fps
+        // The resizeHandler will execute at a rate of 15fps
       }, 66);
     }
   }
 
-  // function actualResizeHandler() {
+  // function resizeHandler() {
   //   // handle the resize event
   // 	// remark this function out completely and then place a version of it where you need it...
   // }

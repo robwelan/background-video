@@ -1,17 +1,21 @@
+.relative-assets {
+  position: relative;
+}
+
 .background-video {
   position: relative;
-	height: 0;
+  height: 0;
   z-index: -99;
 }
 
 .background-video iframe {
   position: absolute;
-	top: 0;
-	left: 0;
+  top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .layer {
@@ -27,34 +31,37 @@
 .bv-image {
   position: absolute;
   z-index: -100;
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
   height: auto;
 }
 
+
 /* Aspect Ratios */
+
 .aspect-ratio-9-16 {
   width: 100vw;
   max-width: 100%;
   height: calc(100vw * (9/16));
 }
 
-.aspect-ratio-9-16 .bv-image {
-  height: calc(100vw * (9/16));
-}
 
 /* Fixed Heights */
+
 .height600px {
   width: 100vw;
   max-width: 100%;
   height: 600px;
+  overflow-y: hidden;
 }
 
 .height600px .bv-image {
   margin-top: -160px;
 }
 
-/* Responsive Media Queries */
+
+/* Responsive Behaviour */
+
 @media screen and (max-width: 1024px) {
   .height600px {
     height: 576px;
@@ -63,7 +70,10 @@
 
 @media screen and (max-width: 768px) {
   .height600px {
-    height: 432px;
+    height: 180px;
+  }
+  .height600px .bv-image {
+    margin-top: -74px;
   }
 }
 
@@ -99,13 +109,19 @@
 
 @media screen and (max-width: 414px) {
   .height600px {
-    height: 233px;
+    height: 180px;
+  }
+  .height600px .bv-image {
+    margin-top: -40px;
   }
 }
 
 @media screen and (max-width: 375px) {
   .height600px {
-    height: 211px;
+    height: 180px;
+  }
+  .height600px .bv-image {
+    margin-top: -40px;
   }
 }
 
@@ -118,5 +134,8 @@
 @media screen and (max-width: 320px) {
   .height600px {
     height: 180px;
+  }
+  .height600px .bv-image {
+    margin-top: -30px;
   }
 }
