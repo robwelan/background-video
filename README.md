@@ -3,6 +3,17 @@ Defined to use with YouTube only.
 
 Here's an example: <a href="https://robwelan.github.io/background-video/" target="_blank">https://robwelan.github.io/background-video/</a>.
 
+## Features
+* autoplay
+* run in the background
+* transparency overlay
+* overlay text
+* loop
+* no black bars
+* responsiveness
+* auto re-size
+* background image fallback
+
 ## Instructions
 Define a variable using backgroundVideo. For example:  
 ```javascript
@@ -98,6 +109,23 @@ The following optional arguments can also be included:
 
 NOTE: clipTop looks for 'fixed-height' to be added to the class of the parent object.
 
+### clipRatioHorizontal
+* Number (pixels)
+* default value: 0
+* ratio of clip to remove from the top based on overall height of the video screen.
+
+### fixedHeight
+* Boolean
+* default value: false
+* limits the video height to the height stipulated by the CSS
+
+This one is used when the video you want to play has not been recorded in the correct ratio, and has been 'converted' to 1080p by YouTube. This always leaves black bars somewhere (usually top and bottom horizontal bars). Clipping removes the bars. Yay.
+
+### verbose
+* Boolean
+* default value: true
+* when set to false, only errors are logged.
+
 ### Complete Settings Definition
 ```javascript
 var oSettings = {
@@ -110,7 +138,10 @@ var oSettings = {
   autoplay: true,
   loop: false,
   playlist: '',
-  clipTop: 0
+  clipTop: 0,
+  clipRatioHorizontal,
+  fixedHeight,
+  verbose: true
 }
 ```
 

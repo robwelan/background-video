@@ -227,11 +227,16 @@ backgroundVideo = function () {
       height = Math.ceil(width * (9 / 16));
     }
 
-    if (hasClass(oParentElement, "fixed-height")) {
-      var fixHeight = oParentElement.offsetHeight;
-      oTarget.style.height = height + "px";
-      clipVideo(oParentElement, oTarget, height, fixHeight);
-    } else {
+    var isFixed = false;
+    if (o.hasOwnProperty('fixedHeight') === true) {
+      if (o.fixedHeight === true) {
+        var fixHeight = oParentElement.offsetHeight;
+        oTarget.style.height = height + "px";
+        clipVideo(oParentElement, oTarget, height, fixHeight);
+        isFixed = true;
+      }
+    }
+    if (isFixed === false) {
       oTarget.style.height = height + "px";
       oParentElement.style.height = height + "px";
       clipVideo(oParentElement, oTarget, 0, 0);
@@ -373,9 +378,4 @@ backgroundVideo = function () {
       }, 66);
     }
   }
-
-  // function resizeHandler() {
-  //   // handle the resize event
-  // 	// remark this function out completely and then place a version of it where you need it...
-  // }
 })();
