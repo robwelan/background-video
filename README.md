@@ -139,8 +139,8 @@ var oSettings = {
   loop: false,
   playlist: '',
   clipTop: 0,
-  clipRatioHorizontal,
-  fixedHeight,
+  clipRatioHorizontal: 0,
+  fixedHeight: false,
   verbose: true
 }
 ```
